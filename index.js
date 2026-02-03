@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const env = require("dotenv");
 const mongoose = require("mongoose");
-const sendMail = require("./services/email.service");
+const Cron = require("./crons/cron");
 const app = express();
 
 
@@ -21,4 +21,5 @@ app.listen(process.env.PORT, async () => {
     } catch (error) {
         console.log(error);
     }
+    Cron.mailerCron();
 });
