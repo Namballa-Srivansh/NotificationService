@@ -14,7 +14,7 @@ const ticketRoutes = require("./routes/tickets.routes");
 ticketRoutes(app);
 
 app.listen(process.env.PORT, async () => {
-    sendMail(process.env.EMAIL, process.env.EMAIL_PASS);
+
     try {
         await mongoose.connect(process.env.DB_URL);
         console.log("Database connected");

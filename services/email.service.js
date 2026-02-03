@@ -2,20 +2,20 @@ const nodemailer = require("nodemailer");
 const env = require("dotenv");
 env.config();
 
-const sendMail = (userId, password) => {
+const sendMail = (userId, password, mailData) => {
     const transport = nodemailer.createTransport({
         service: "Gmail",
         auth: {
-            user: process.env.EMAIL,
-            pass: process.env.EMAIL_PASS
+            user: userId,
+            pass: password
         }
     });
 
     transport.sendMail({
-        from: "mba@support.com",
-        to: "notificationservice32@gmail.com",
-        subject: "Test Email",
-        text: "This is another test email"
+        from: mailData.from,
+        to: mailData.to,
+        subject: mailData.subject,
+        text: mailData.text
     });
     console.log("Email sent");
 }
